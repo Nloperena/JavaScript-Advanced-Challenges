@@ -32,12 +32,29 @@ console.log(sortLowtoHigh([3,2,1,0]));
 
 //Create a function that sorts an array of objects and returns the prices sorted from high to low
 
-function sortHighToLow([
-    
-])
-console.log(sortHightoLow([
+function sortHighToLow(numbers) {
+    return numbers.sort((a, b) => b.price - a.price);
+}
+console.log(sortHighToLow([
     {id: 1, price: 50},
     {id: 1, price: 30},
     {id: 1, price: 60},
     {id: 1, price: 10},
 ]));
+
+//Create a function that finds all posts by a single user. API: https://jsonplaceholder.typicode.com/posts .
+
+async function postsByUser(uId) {
+//     fetch("https://jsonplaceholder.typicode.com/posts")
+//     .then(res => {
+//         console.log(res)
+//         console.log(uid)}
+  
+// )
+    const promise = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const result = await promise.json();
+    const posts = result.filter(elem => elem.userId === uId)
+    console.log(posts)
+}
+
+postsByUser(3)
